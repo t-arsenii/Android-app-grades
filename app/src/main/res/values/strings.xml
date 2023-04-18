@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">Project 1</string>
+    <string name="Name">Imię</string>
+    <string name="ErrorImie">Imie nie moze byc puste!</string>
+    <string name="ErrorNazwisko">Nazwiko nie moze byc puste!</string>
+    <string name="ErrorLiczbaOcenZakres">Liczba ocen [5-15]</string>
+    <string name="ErrorLiczbaOcenPuste">Liczba ocen nie moze byc puste!</string>
+    <string-array name="nazwyPrzedmiotow">
+        <item>Matematyka</item>
+        <item>Сhemia</item>
+        <item>Biologia</item>
+        <item>Fizyka</item>
+        <item>Geografia</item>
+        <item>Historia</item>
+        <item>Informatyka</item>
+        <item>Muzyka</item>
+        <item>Przyroda</item>
+        <item>Technika</item>
+        <item>Wychowanie fizyczne</item>
+        <item>Język obcy</item>
+        <item>Plastyka</item>
+        <item>Wiedza o społeczeństwie</item>
+        <item>Edukacja dla bezpieczeństwa</item>
+    </string-array>
+</resources>
