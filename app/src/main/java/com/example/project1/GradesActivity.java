@@ -15,7 +15,7 @@ import java.util.ArrayList;
 public class GradesActivity extends AppCompatActivity {
     public static final String OCENY_ARRAYKEY = "";
     public static final String SRIEDNIA_KEY = "";
-    ArrayList<ModelOceny> OcenyModels = new ArrayList<>();
+    ArrayList<ModelOceny> OcenyModels;
     InteraktywnyAdapterTablicy adapter;
     int lizba_ocen = 0;
     @Override
@@ -23,12 +23,11 @@ public class GradesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_grades);
         lizba_ocen = Integer.parseInt(getIntent().getExtras().getString(MainActivity.STATE_liczbaOcen));
-        RecyclerView recyclerView = findViewById(R.id.RecyclerViewOceny);
-        System.out.println(OcenyModels.size());
-        setOcenyModels();
-        adapter = new InteraktywnyAdapterTablicy(this, OcenyModels);
-        recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        if(OcenyModels == null){
+            OcenyModels = new ArrayList<>();
+            setOcenyModels();
+            makeAdapter();
+        }
 
 
         Button returnButton = findViewById(R.id.buttonToMain);
@@ -50,7 +49,7 @@ public class GradesActivity extends AppCompatActivity {
     protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
         OcenyModels = savedInstanceState.getParcelableArrayList(OCENY_ARRAYKEY);
-        System.out.println(OcenyModels);
+        makeAdapter();
     }
 
     private void returnToMain() {
@@ -64,5 +63,11 @@ public class GradesActivity extends AppCompatActivity {
         intent.putExtra(SRIEDNIA_KEY, String.format("%.2f", sriednia));
         setResult(RESULT_OK, intent);
         finish();
+    }
+    private void makeAdapter(){
+        RecyclerView recyclerView = findViewById(R.id.RecyclerViewOceny);
+        adapter = new InteraktywnyAdapterTablicy(this, OcenyModels);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 }
